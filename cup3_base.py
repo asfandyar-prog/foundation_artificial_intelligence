@@ -53,31 +53,31 @@ class Cup3(Problem):
                         acts.append("o {} {}".format(i,j))
         return acts
 
-    # def result(self, state, action):
-    #     """Return the state that results from executing the given
-    #     action in the given state. Assume that the action is one of
-    #     self.actions(state)."""
-    #     cup1,cup2,cup3=state
+    def result1(self, state, action):
+        """Return the state that results from executing the given
+        action in the given state. Assume that the action is one of
+        self.actions(state)."""
+        cup1,cup2,cup3=state
        
 
-    #     if action == "o 1 2":
-    #         m=min(cup1,max(self.h2)-cup2)
-    #         return (cup1-m,cup2+m,cup3)
-    #     elif action == "o 1 3":
-    #         m=min(cup1,max(self.h3)-cup3)
-    #         return (cup1-m,cup2,cup3+m)
-    #     elif action == "o 2 1":
-    #         m=min(cup2,max(self.h1)-cup1)
-    #         return (cup1+m,cup2-m,cup3)
-    #     elif action == "o 2 3":
-    #         m=min(cup2,max(self.h3)-cup3)
-    #         return (cup1,cup2-m,cup3+m)
-    #     elif action == "o 3 1":
-    #         m=min(cup3,max(self.h1)-cup1)
-    #         return (cup1+m,cup2,cup3-m)
-    #     elif action == "o 3 2":
-    #         m=min(cup3,max(self.h2)-cup2)
-    #         return (cup1,cup2+m,cup3-m)
+        if action == "o 1 2":
+            m=min(cup1,max(self.h2)-cup2)
+            return (cup1-m,cup2+m,cup3)
+        elif action == "o 1 3":
+            m=min(cup1,max(self.h3)-cup3)
+            return (cup1-m,cup2,cup3+m)
+        elif action == "o 2 1":
+            m=min(cup2,max(self.h1)-cup1)
+            return (cup1+m,cup2-m,cup3)
+        elif action == "o 2 3":
+            m=min(cup2,max(self.h3)-cup3)
+            return (cup1,cup2-m,cup3+m)
+        elif action == "o 3 1":
+            m=min(cup3,max(self.h1)-cup1)
+            return (cup1+m,cup2,cup3-m)
+        elif action == "o 3 2":
+            m=min(cup3,max(self.h2)-cup2)
+            return (cup1,cup2+m,cup3-m)
 
     def result(self, state, action):
         cups = list(state)  # convert tuple → list
@@ -104,13 +104,9 @@ def main():
     c = Cup3()
     print(c.actions((5, 0, 0)))
     print(c.result((5, 0, 0), "o 1 2"))
+
+    print(c.result1((5, 0, 0), "o 1 3"))
     print(c.result((5, 0, 0), "o 1 3"))
-    print(c.result((5, 0, 0), "o 2 1"))
-    print(c.result((5, 0, 0), "o 2 3"))
-    print(c.result((5, 0, 0), "o 3 1"))
-    print(c.result((5, 0, 0), "o 3 2"))
-
-    # print(Trial_Error(c))
-
+  
 
 main()
