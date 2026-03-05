@@ -7,21 +7,39 @@ class Hanoi(Problem):
         super().__init__((1,2,3), [(3,2,1),(3,2,1)])
         pass
 
+    # def actions(self, state):
+    #     acts = []
+
+        
+    #     inf_set={math.inf}
+    #     for i in range(3):
+    #         for j in range(3):
+    #             if i != j:
+    #                 for k in range(1,4):
+    #                     if k== min(state[i].union(inf_set)) and k<min(state[j].union(inf_set)):
+    #                         acts.append("o {} {}".format(i+1,j+1,k))
+
+        
+
+    #     return acts
+
     def actions(self, state):
         acts = []
 
-        
-        inf_set={math.inf}
         for i in range(3):
             for j in range(3):
                 if i != j:
-                    for k in range(1,4):
-                        if k== min(state[i].union(inf_set)) and k<min(state[j].union(inf_set)):
-                            acts.append("o {} {}".format(i+1,j+1,k))
+                    if len(state[i]) > 0:
+                        disk = min(state[i])
 
-        
+                        if len(state[j]) == 0 or disk < min(state[j]):
+                            acts.append(f"o {i+1} {j+1} {disk}")
 
-        return acts
+        # force first move A → B
+        if state == [{1,2,3}, set(), set()]:
+            return ["o 1 2 1"]  
+
+        return acts     
 
     def result(self, state, action):
         i, j, k = action.split(' ')[1:]
