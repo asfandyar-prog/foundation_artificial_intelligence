@@ -72,8 +72,7 @@ def main():
                         (0,0,0,0)
                         (0,0,0,0))))
 
-    my_goal_state
+my_goal_state
 
 
-    main()
-
+main()
