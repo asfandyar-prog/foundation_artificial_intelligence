@@ -32,34 +32,34 @@ class FourQueensProblem(Problem):
         return acts
 
 
-    def result(self, state, action):
-        # Return with the new state of the result of the action parameter used in the state parameter.
-        # Tip: don't forget to convert state to list of lists and then convert the result back to tuple of tuples
-        i,j=action.split(' ')[1:]
-        i,j=int(i),int(j)
-        new_state=convert_to_list(state)
+    # def result(self, state, action):
+    #     # Return with the new state of the result of the action parameter used in the state parameter.
+    #     # Tip: don't forget to convert state to list of lists and then convert the result back to tuple of tuples
+    #     i,j=action.split(' ')[1:]
+    #     i,j=int(i),int(j)
+    #     new_state=convert_to_list(state)
         
-        for l in range(4):
-            for k in range(4):
-                if l==i and k==j :
-                    new_state[l][k]=1
-                elif l==i or k==j or l+k==i+j or l-k==i-j:
-                    new_state[l][k]=1
-                else:
-                    new_state[l][k]=0
+    #     for l in range(4):
+    #         for k in range(4):
+    #             if l==i and k==j :
+    #                 new_state[l][k]=1
+    #             elif l==i or k==j or l+k==i+j or l-k==i-j:
+    #                 new_state[l][k]=1
+    #             else:
+    #                 new_state[l][k]=0
 
-        return convert_to_tuple(new_state)
+    #     return convert_to_tuple(new_state)
 
-    def goal_test(self,state):
-        # For a given state parameter check if it is a goal state.
-        # Tip 1: don't forget conversions; Tip 2: you can use any() or all() for easier implementation
+    # def goal_test(self,state):
+    #     # For a given state parameter check if it is a goal state.
+    #     # Tip 1: don't forget conversions; Tip 2: you can use any() or all() for easier implementation
         
-        bool_state = convert_to_list(state)
-        for i in range(4):
-            for j in range(4):
-                 bool_state[i][j]=state[i][j]==1
+    #     bool_state = convert_to_list(state)
+    #     for i in range(4):
+    #         for j in range(4):
+    #              bool_state[i][j]=state[i][j]==1
 
-        return  all([any(bool_state[i]) for i in range(4)])
+    #     return  all([any(bool_state[i]) for i in range(4)])
 
 
 
